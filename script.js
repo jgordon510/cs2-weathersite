@@ -3,7 +3,7 @@ window.onload = function() {
 }
 var Weather = {
     getLocation: function() {
-        bootbox.prompt("Enter a location:" , function(location) {
+        bootbox.prompt("Enter a location:", function(location) {
             Weather.getWeather(location);
         });
     },
@@ -22,6 +22,8 @@ var Weather = {
     },
     displayWeather: function(weather) {
         console.log(weather);
+        $("#main").html('<p><h1>' + weather.city + '</p>');
+        $("#main").append('<p>' + weather.currently + '</p>');
+        $("#main").append('<p>' + weather.temp + '</p>');
     }
 };
-
