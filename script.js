@@ -25,5 +25,10 @@ var Weather = {
         $("#main").html('<p><h1>' + weather.city + '</p>');
         $("#main").append('<p>' + weather.currently + '</p>');
         $("#main").append('<p>' + weather.temp + '</p>');
+        $("#main").append('<button type="button" class="btn btn-success btn-lg" id="resetButton">Reset</button>');
+        $("#resetButton").click(function(event) {
+            $("#main").html('');
+            Weather.getLocation();
+        })
     }
 };
