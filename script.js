@@ -1,3 +1,27 @@
-bootbox.prompt("<p>We do, doodley do, doodley do, doodely do, <p>What we must, muddily must, muddily must, muddily must;<p>Muddily do, muddily do, muddily do, muddily do,<p>Until we bust, bodily bust, bodily bust, bodily bust.", function (result) {
-    bootbox.alert(result);
-})
+window.onload = function() {
+    Weather.getLocation();
+}
+var Weather = {
+    getLocation: function() {
+        bootbox.prompt("Enter a location:" , function(location) {
+            Weather.getWeather(location);
+        });
+    },
+    getWeather: function(location) {
+        var weatherSettings = {
+            location: location,
+            unit: 'f',
+            success: function(weather) {
+                Weather.displayWeather(weather);
+            },
+            error: function(error) {
+                console.log(error);
+            }
+        };
+        $.simpleWeather(weatherSettings);
+    },
+    displayWeather: function(weather) {
+        console.log(weather);
+    }
+};
+
