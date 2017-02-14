@@ -26,6 +26,27 @@ var Weather = {
         $("#main").append('<p>' + weather.currently + '</p>');
         $("#main").append('<p>' + weather.temp + '</p>');
         $("#main").append('<button type="button" class="btn btn-success btn-lg" id="resetButton">Reset</button>');
+        var color;
+        if(weather.temp < 60)
+        {
+            //cold
+            color = {
+                backgroundColor: '#c9ddff'
+            };
+        } else if(weather.temp < 80)
+        {
+            //medium
+            color = {
+                backgroundColor: '#ffd5c9'
+            };
+        } else
+        {
+            //hot
+            color = {
+                backgroundColor: '#ffc9c9'
+            };
+        }
+        $("body").animate(color, 1500);
         $("#resetButton").click(function(event) {
             $("#main").html('');
             Weather.getLocation();
